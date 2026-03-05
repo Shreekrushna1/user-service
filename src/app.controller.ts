@@ -11,7 +11,7 @@ export class AppController {
   @MessagePattern("create")
   async create(@Payload() data: CreateDto) {
     try {
-      return this.service.create(data);
+      return await this.service.create(data);
     } catch (error) {
       if (error.code == 11000) {
         throw new RpcException({
